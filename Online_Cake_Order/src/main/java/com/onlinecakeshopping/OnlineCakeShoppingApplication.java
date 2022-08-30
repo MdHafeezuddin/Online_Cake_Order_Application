@@ -16,7 +16,6 @@ public class OnlineCakeShoppingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineCakeShoppingApplication.class, args);
 		System.out.println("Online_Cake_Shopping is Application is Ready ");
-		//hi there all git push//////
 	}
 	
 }
