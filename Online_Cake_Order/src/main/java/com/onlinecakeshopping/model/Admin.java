@@ -9,15 +9,15 @@ import javax.persistence.Table;
 //import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "admin_details")//database table
+@Table(name = "admin_details")//database table with name 
 public class Admin {
 	
 	
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "admin_id")
-		private long adminId;
+		@Column(name = "admin_id")//this is column name
+		private int adminId;
 //		@NotBlank(message = "Name is mandatory")
 		@Column(name = "admin_name")
 		private String adminName;
@@ -33,9 +33,9 @@ public class Admin {
 
 		
 		
-		public Admin(long adminId, String adminName, String adminPassword) {
+		public Admin(int adminId, String adminName, String adminPassword) {
 			super();
-			this.adminId = adminId;
+			this.adminId =  adminId;
 			this.adminName = adminName;
 			this.adminPassword = adminPassword;
 		}
@@ -44,7 +44,7 @@ public class Admin {
 			return adminId;
 		}
 		 
-		public void setAdminId(long adminId) {
+		public void setAdminId(int adminId) {
 			this.adminId = adminId;
 		}
 	
