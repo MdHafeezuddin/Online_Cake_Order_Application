@@ -9,7 +9,7 @@ import javax.persistence.Table;
 //import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "admin_details")
+@Table(name = "admin_details")//database table
 public class Admin {
 	
 	
