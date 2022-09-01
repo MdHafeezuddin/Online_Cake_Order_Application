@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 
-
+//this annotation is to denote this is spring boot application
 @SpringBootApplication
 @EnableEurekaServer
 @ComponentScan(basePackages = "com.onlinecakeshopping")
