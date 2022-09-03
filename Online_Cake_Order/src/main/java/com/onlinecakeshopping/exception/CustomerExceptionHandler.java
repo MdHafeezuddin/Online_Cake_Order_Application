@@ -15,11 +15,11 @@ public class CustomerExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerExceptionHandler.class);
 	
-	@ExceptionHandler(CakeIdNotFoundException.class)
-	public ResponseEntity<Object> handleCakeIdNotFoundException(){
-		LOG.error("handleCakeIdNotFoundException");
-		return new ResponseEntity<Object>("Given cake id not present in store",HttpStatus.BAD_REQUEST);
-	}
+//	@ExceptionHandler(CakeIdNotFoundException.class)
+//	public ResponseEntity<Object> handleCakeIdNotFoundException(){
+//		LOG.error("handleCakeIdNotFoundException");
+//		return new ResponseEntity<Object>("Given cake id not present in store",HttpStatus.BAD_REQUEST);
+//	}
 	
 	@ExceptionHandler(OrderIdNotFoundException.class)
 	public ResponseEntity<Object> handleOrderIdNotFoundException(){

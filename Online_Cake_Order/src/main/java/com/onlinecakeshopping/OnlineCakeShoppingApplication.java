@@ -2,14 +2,12 @@ package com.onlinecakeshopping;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 
 //this annotation is to denote this is spring boot application
 @SpringBootApplication
-@EnableEurekaServer
+//It tells spring to scan for annotated components
 @ComponentScan(basePackages = "com.onlinecakeshopping")
 public class OnlineCakeShoppingApplication {
 

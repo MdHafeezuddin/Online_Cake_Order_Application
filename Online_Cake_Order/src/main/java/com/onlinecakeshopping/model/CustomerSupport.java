@@ -13,14 +13,16 @@ import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+//The Class CustomerSupport is the Entity representing CustomerSupport table in database
 @Entity
 @Table(name = "customersupport_details")
 public class CustomerSupport {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customerSupport_id")
-	private long customerSupportId;
+	private int customerSupportId;
 	@Column(name = "solve_complaint")
 	private String solveComplaint;
 
@@ -29,40 +31,88 @@ public class CustomerSupport {
 	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name = "complaint_id")
 	private RaiseComplaint raiseComplaint;
+	
+	/**
+	 * CustomerSupport default constructors
+	 */
 
 	
 	public CustomerSupport() {
 		super();
 
 	}
+	
+	/**
+     * CustomerSupport constructor with fields as parameters
+     *
+     * @param customerSupportId      the customerSupportId Id
+     * @param solve complaint     the solve complaint
+     * @param raisecomplaint    the raisecomplaint
+
+     */
 
 	
-	public CustomerSupport(long customerSupportId, String solveComplaint, RaiseComplaint raiseComplaint) {
+	public CustomerSupport(int customerSupportId, String solveComplaint, RaiseComplaint raiseComplaint) {
 		super();
 		this.customerSupportId = customerSupportId;
 		this.solveComplaint = solveComplaint;
 		this.raiseComplaint = raiseComplaint;
 	}
+	
+	/**
+	* gets the CustomerSupport Id
+	*
+	* @return
+	*/
 
-	public long getCustomerSupportId() {
+	public int getCustomerSupportId() {
 		return customerSupportId;
 	}
+	
+	/**
+	* sets the CustomerSupport Id
+	*
+	* @return
+	*/
 
-	public void setCustomerSupportId(long customerSupportId) {
+	public void setCustomerSupportId(int customerSupportId) {
 		this.customerSupportId = customerSupportId;
 	}
+	
+	/**
+	* gets the SolveComplaint Id
+	*
+	* @return
+	*/
 
 	public String getSolveComplaint() {
 		return solveComplaint;
 	}
+	
+	/**
+	* sets the SolveComplaint Id
+	*
+	* @return
+	*/
 
 	public void setSolveComplaint(String solveComplaint) {
 		this.solveComplaint = solveComplaint;
 	}
+	
+	/**
+	* gets the raiseComplaint Id
+	*
+	* @return
+	*/
 
 	public RaiseComplaint getRaiseComplaint() {
 		return raiseComplaint;
 	}
+	/**
+	* sets the Complaint Id
+	*
+	* @return
+	*/
 
 	public void setRaiseComplaint(RaiseComplaint raiseComplaint) {
 		this.raiseComplaint = raiseComplaint;

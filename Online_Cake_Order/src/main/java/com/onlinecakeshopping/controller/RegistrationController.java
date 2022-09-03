@@ -21,8 +21,14 @@ public class RegistrationController {
 	private RegistrationService regServe;
 	
 	
+	/*
+	 *  Controller for the requests related to the User
+	 */	
 	
-	//http://localhost:8091/onlinecakeorder/registration/adduser
+	//requests the controller to add users
+	
+	
+	//http://localhost:8091/onlinecakeorder/registration/adduser**done
 	
 	@PostMapping("/adduser")
 	public ResponseEntity<User> adduser(@RequestBody User user)

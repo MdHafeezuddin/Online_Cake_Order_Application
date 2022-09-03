@@ -15,17 +15,18 @@ import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// * The Class Cart is the Entity representing Cart table in database
 @Entity
 @Table(name = "cart_details")
 public class Cart implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cart_id")
-	private long cartId;
+	private int cartId;
 	@Column(name = "total_bill")
-	private long totalBill;
+	private int totalBill;
 	@Column(name = "invoice")
 	private String invoice;
 
@@ -35,42 +36,95 @@ public class Cart implements Serializable{
 	@JoinColumn(name = "cake_id")
 	private Cake cake;
 	
+	/**
+	 * Cart default constructor
+	 */
+	
 	public Cart() {
 		super();
 
 	}
+	
 
-	public Cart(long cartId, long totalBill, String invoice, Cake cake) {
+	/**
+     * Cart constructor with fields as parameters
+     *
+     * @param cartuserId      the cart Id
+     * @param totalBill      the  total bill of cart
+     * @param invoice     the invoice of cart
+     * @param cakes   the cakes of cart
+     */
+
+	public Cart(int cartId, int totalBill, String invoice, Cake cake) {
 		super();
 		this.cartId = cartId;
 		this.totalBill = totalBill;
 		this.invoice = invoice;
 		this.cake = cake;
 	}
+	/**
+	* gets the Cart Id
+	*
+	* @return
+	*/
 
-	public long getCartId() {
+	public int getCartId() {
 		return cartId;
 	}
+	/**
+	* setters for the Cart Id
+	*
+	* @param cartuserId
+	*/
 
-	public void setCartId(long cartId) {
+	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
+	
+	/**
+	* gets the cart totalbill
+	*
+	* @return
+	*/
 
-	public long getTotalBill() {
+	public int getTotalBill() {
 		return totalBill;
 	}
+	/**
+	* setters for the cart totalbill
+	*
+	* @param totalBill
+	*/
 
-	public void setTotalBill(long totalBill) {
+	public void setTotalBill(int totalBill) {
 		this.totalBill = totalBill;
 	}
+	
+	/**
+	* setters for the cart invoice
+	*
+	* @param invoice
+	*/
 
 	public String getInvoice() {
 		return invoice;
 	}
+	
+	/**
+	* gets the cart invoice
+	*
+	* @return
+	*/
 
 	public void setInvoice(String invoice) {
 		this.invoice = invoice;
 	}
+	
+	/**
+	* gets for the cake id
+	*
+	* @param cakes
+	*/
 
 	public Cake getCake() {
 		return cake;

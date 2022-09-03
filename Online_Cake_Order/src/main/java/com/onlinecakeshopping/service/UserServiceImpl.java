@@ -10,7 +10,7 @@ import com.onlinecakeshopping.dao.CakeRepository;
 import com.onlinecakeshopping.dao.CartRepository;
 import com.onlinecakeshopping.dao.FeedbackRepository;
 import com.onlinecakeshopping.dao.RaiseComplaintRepository;
-import com.onlinecakeshopping.exception.CakeIdNotFoundException;
+
 import com.onlinecakeshopping.model.Cake;
 import com.onlinecakeshopping.model.Cart;
 import com.onlinecakeshopping.model.Feedback;
@@ -57,24 +57,22 @@ public class UserServiceImpl implements UserService {
 		return raise;
 	}
 	
-	public Cart deleteCakebyId(int cakeId) throws CakeIdNotFoundException {
-		try {
+	public Cake deleteCakebyId(int cakeId) {
+		
 		cartRepo.deleteById(cakeId);
 		return null;
-		}catch (Exception e) {
-		
-			throw new CakeIdNotFoundException("Entered cake id is not found");
 		}
-	}
+		
+	
+		
+	
 	@Override
-	public Cake getById(int cakeId) throws CakeIdNotFoundException {
-		try {
+	public Cake getById(int cakeId) {
+	
 		Optional<Cake> cake=cakeRepo.findById(cakeId);
 		return cake.get();
-		}catch (Exception e) {
-			throw new CakeIdNotFoundException("Entered cake id is not found");
 		}
-	}
+	
 	@Override
 	public Cart addcakeToCart(Cart cart) {
 		Cart addtocart=cartRepo.saveAndFlush(cart);

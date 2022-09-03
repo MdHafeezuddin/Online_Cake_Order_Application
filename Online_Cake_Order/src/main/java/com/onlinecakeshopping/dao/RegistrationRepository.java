@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.onlinecakeshopping.model.RegistrationForm;
 
+
+//it is used to indicate the class provides crud opretions by extending to the jpa
 @Repository
 public interface RegistrationRepository extends JpaRepository<RegistrationForm, Integer> {
 

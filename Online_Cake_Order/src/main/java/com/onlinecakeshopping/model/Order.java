@@ -21,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Order {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
-	private long orderId;
+	private int orderId;
 	@Column(name = "deliver_status")
 	private String deliverStatus;
 	@Column(name = "payment_status")
@@ -41,7 +41,7 @@ public class Order {
 	}
 
 	
-	public Order(long orderId, String deliverStatus, String paymentStatus, Cart cart) {
+	public Order(int orderId, String deliverStatus, String paymentStatus, Cart cart) {
 		super();
 		this.orderId = orderId;
 		this.deliverStatus = deliverStatus;
@@ -50,12 +50,12 @@ public class Order {
 	}
 
 	
-	public long getOrderId() {
+	public int getOrderId() {
 		return orderId;
 	}
 
 	
-	public void setOrderId(long orderId) {
+	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 

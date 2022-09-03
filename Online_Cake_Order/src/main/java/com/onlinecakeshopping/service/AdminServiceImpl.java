@@ -11,7 +11,7 @@ import com.onlinecakeshopping.dao.FeedbackRepository;
 import com.onlinecakeshopping.dao.OrderRepository;
 import com.onlinecakeshopping.dao.RaiseComplaintRepository;
 import com.onlinecakeshopping.dao.UserRepository;
-import com.onlinecakeshopping.exception.CakeIdNotFoundException;
+
 import com.onlinecakeshopping.exception.OrderIdNotFoundException;
 import com.onlinecakeshopping.exception.UserIdNotFoundException;
 import com.onlinecakeshopping.model.Cake;
@@ -27,44 +27,53 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private CakeRepository cakeRepo;
 	
+	// connecting the service implementation with the cake repository
+	
 
 
 	@Autowired
 	private RaiseComplaintRepository raiseRepo;
+	
+	// connecting the service implementation with the cake repository
 	
 	
 
 	@Autowired
 	private FeedbackRepository feedbackRepo;
 	
+	// connecting the service implementation with the cake repository
+	
 	
 
 	@Autowired
 	private OrderRepository orderRepo;
 	
+	// connecting the service implementation with the order repository
+	
 	@Autowired
 	private UserRepository userRepo;
+	
+	// connecting the service implementation with the User repository
 
 
-
-	@Override
+	// method implementing to add Cake in Cake Store
+	@Override//
 	public Cake addCakes(Cake cake) {
-		Cake veg= cakeRepo.saveAndFlush(cake);
-		return veg;
+		Cake food= cakeRepo.saveAndFlush(cake);
+		return food;
 	}
 	
+	// method implementing to delete Cake in Cake Store
 
 	@Override
-	public Cake deleteCakes(int cakeId) throws CakeIdNotFoundException {
-		try {
+	public Cake deleteCakes(int cakeId) {
+		
 		 cakeRepo.deleteById(cakeId);
 		return null;
-		}catch (Exception e) {
-			throw new CakeIdNotFoundException("Entered Cake id is not found");
-		}
+		
 	}
 	
-	
+	// method implementing to update Cakes in Cake Store
 
 	@Override
 	public Cake updateCakes(Cake Cake) {
@@ -72,7 +81,7 @@ public class AdminServiceImpl implements AdminService{
 		return UpdatedCake;
 	}
 
-	
+	// method implementing to view all Cakes in Cake Store
 
 	@Override
 	public List<Cake> getAllCakes() {
@@ -80,7 +89,7 @@ public class AdminServiceImpl implements AdminService{
 		return cakeRepo.findAll();
 	}
 	
-	
+	// method implementing to view all complaints raised in Cake Store by customer
 
 	@Override
 	public List<RaiseComplaint> viewComplaints() {
@@ -88,7 +97,7 @@ public class AdminServiceImpl implements AdminService{
 		return raiseRepo.findAll();
 	}
 	
-	
+	// method implementing to view feedbacks given by customer
 
 	@Override
 	public List<Feedback> viewFeedbacks() {
@@ -96,34 +105,37 @@ public class AdminServiceImpl implements AdminService{
 		return feedbackRepo.findAll();
 	}
 	
-	
+	// method implementing to view orders in Cake Store
 
 	@Override
 	public List<Order> viewOrders() {
 		
 		return orderRepo.findAll();
 	}
+	// method implementing to get Cake byId in Cake Store
 
 	@Override
-	public Cake getById(int CakeId) throws CakeIdNotFoundException {
-		try {
+	public Cake getById(int CakeId){
+		
 		Optional<Cake> Cake=cakeRepo.findById(CakeId);
 		return Cake.get();
-		}catch (Exception e) {
-			throw new CakeIdNotFoundException("Entered Cake id is not found");
-		}
+		
 	}
+	// method implementing to  getorder by id in Cake Store
 
 	@Override
-	public Order getOrderById(int orderId) throws OrderIdNotFoundException{
+	public Order getOrderById(int orderId) {
 		try {
 		Optional<Order> orderById=orderRepo.findById(orderId);
 		return orderById.get();
-		}catch (Exception e) {
-			throw new OrderIdNotFoundException("Entered order id is not found");
 		}
+		catch (Exception e) {
+			throw new OrderIdNotFoundException("Order id is not found");
+		}
+		
 	}
 	
+	// method implementing to view user by the userId in Cake Store
 
 	@Override
 	public User viewUserById(int userId) throws UserIdNotFoundException{

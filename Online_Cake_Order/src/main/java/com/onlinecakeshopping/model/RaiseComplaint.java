@@ -23,7 +23,7 @@ public class RaiseComplaint {
 	@Id
 	
 	@Column(name = "complaint_id")
-	private long complaintId;
+	private int complaintId;
 	@Column(name = "complaint_description")
 	private String complaintDescription;
 
@@ -34,17 +34,17 @@ public class RaiseComplaint {
 	}
 
 	
-	public RaiseComplaint(long complaintId, String complaintDescription) {
+	public RaiseComplaint(int complaintId, String complaintDescription) {
 		super();
 		this.complaintId = complaintId;
 		this.complaintDescription = complaintDescription;
 	}
 	
-	public long getComplaintId() {
+	public int getComplaintId() {
 		return complaintId;
 	}
 	
-	public void setComplaintId(long complaintId) {
+	public void setComplaintId(int complaintId) {
 		this.complaintId = complaintId;
 	}
 

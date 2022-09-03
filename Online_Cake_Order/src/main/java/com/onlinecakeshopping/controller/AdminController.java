@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.onlinecakeshopping.exception.CakeIdNotFoundException;
+
 import com.onlinecakeshopping.exception.OrderIdNotFoundException;
 import com.onlinecakeshopping.exception.UserIdNotFoundException;
 import com.onlinecakeshopping.model.Cake;
@@ -25,8 +25,11 @@ import com.onlinecakeshopping.model.RaiseComplaint;
 import com.onlinecakeshopping.model.User;
 import com.onlinecakeshopping.service.AdminService;
 
+//it is used to handle requests made by the client
 @RestController
+//it is an header based mechanism that allows a server to indicates any origin
 @CrossOrigin("*")
+//it is used to map http requests with handler methods
 @RequestMapping("/admin")
 public class AdminController {
 	
@@ -34,22 +37,37 @@ public class AdminController {
 	@Autowired
 	private AdminService adServe;
 	
+	/*
+	 * Controller for the requests related to the Cake store
+	 */
 	
-	//localhost:8091/onlinecakeorder/admin/addcake
+	// requests the controller to add cake in cake store
+	
+	
+	//localhost:8091/onlinecakeorder/admin/addcake**done
 	@PostMapping("/addcake")
 	public ResponseEntity<Cake> addcake(@RequestBody Cake cake) {
 		adServe.addCakes(cake);
 		return new ResponseEntity("Cake added", HttpStatus.OK);
 
 	}
-	//localhost:8091/onlinecakeorder/admin/deleteById/
+	
+	// requests the controller to delete by cake id in cake store
+	
+	
+	//localhost:8091/onlinecakeorder/admin/deleteById/**done
 	@DeleteMapping("/deleteById/{cakeId}")
-	public ResponseEntity<Cake> deleteVegById(@PathVariable("cakeId") Integer cakeId) throws CakeIdNotFoundException {
+	public ResponseEntity<Cake> deleteVegById(@PathVariable("cakeId") int cakeId)  {
 		adServe.deleteCakes(cakeId);
 		return new ResponseEntity("Cake Deleted", HttpStatus.OK);
 
 	}
-	//localhost:8091/onlinecakeorder/admin/update
+	
+	
+	// requests the controller to update cake in cake store
+	
+	
+	//localhost:8091/onlinecakeorder/admin/update**--done
 	@PutMapping("/update")
 	public ResponseEntity<Cake> updateCakes(@RequestBody Cake cakes) {
 		Cake updatecake = adServe.updateCakes(cakes);
@@ -57,7 +75,10 @@ public class AdminController {
 		return new ResponseEntity("Cake updated successfully", HttpStatus.OK);
 
 	}
-	//localhost:8091/onlinecakeorder/admin/allcake
+	
+	//requests the controller to get all cake from cake store
+	
+	//localhost:8091/onlinecakeorder/admin/allcake**--done
 	@GetMapping("/allcake")
 	public ResponseEntity<List<Cake>> getAllCake() {
 		List<Cake> cakeList = adServe.getAllCakes();
@@ -67,7 +88,14 @@ public class AdminController {
 		return new ResponseEntity<List<Cake>>(cakeList, HttpStatus.OK);
 	}
 		
-	//localhost:8091/onlinecakeorder/admin/viewallraise
+	/*
+	 * Controller for the requests related to the Raise Complaint
+	 */
+
+	// requests the controller to view all complaint raised by user
+	
+	
+	//localhost:8091/onlinecakeorder/admin/viewallraise--done
 		@GetMapping("/viewallraise")
 		public ResponseEntity<List<RaiseComplaint>> viewCompliant() {
 			List<RaiseComplaint> raisecomplaint = adServe.viewComplaints();
@@ -75,7 +103,13 @@ public class AdminController {
 
 		}
 		
-		//localhost:8091/onlinecakeorder/admin/viewfeedback
+		
+		/*
+		 * Controller for the requests related to the feedback
+		 */
+		// requests the controller to view all feedback given by user
+		
+		//localhost:8091/onlinecakeorder/admin/viewfeedback**--done
 		
 		@GetMapping("/viewfeedback")
 		public ResponseEntity<List<Feedback>> viewFeedback() {
@@ -84,7 +118,15 @@ public class AdminController {
 
 		}
 		
-		//localhost:8091/onlinecakeorder/admin/vieworder
+		
+		
+		/*
+		 * Controller for the requests related to the Order
+		 */
+		// requests the controller to view all order by user
+		
+		
+		//localhost:8091/onlinecakeorder/admin/vieworder--done
 		@GetMapping("/vieworder")
 		public ResponseEntity<List<Order>> viewOrders() {
 			List<Order> viewOrder = adServe.viewOrders();
@@ -92,22 +134,44 @@ public class AdminController {
 
 		}
 		
-		//localhost:8091/onlinecakeorder/admin/cakebyid/
+		
+		
+		/*
+		 * Controller for the requests related to the Cake
+		 */
+		// requests the controller to view cake by cakeid
+		
+		
+		
+		//localhost:8091/onlinecakeorder/admin/cakebyid/--done
 		@GetMapping("/cakebyid/{cakeId}")
-		public ResponseEntity getVegById(@PathVariable("cakeId") int cakeId) throws CakeIdNotFoundException {
+		public ResponseEntity getVegById(@PathVariable("cakeId") int cakeId) {
 			Cake cake = adServe.getById(cakeId);
 			return new ResponseEntity<Object>(cake, HttpStatus.OK);
 
 		}
 		
-		//localhost:8091/onlinecakeorder/admin/orderbyid/--
+		
+		/*
+		 * Controller for the requests related to the Order
+		 */
+		// requests the controller to view order by orderid
+		
+		//localhost:8091/onlinecakeorder/admin/orderbyid/--done
+		
 		@GetMapping("/orderbyid/{orderId}")
-		public ResponseEntity geOrderById(@PathVariable("orderId") int ordreId) throws OrderIdNotFoundException {
-			Order order = adServe.getOrderById(ordreId);
+		public ResponseEntity geOrderById(@PathVariable("orderId") int orderId) throws OrderIdNotFoundException {
+			Order order = adServe.getOrderById(orderId);
 			return new ResponseEntity<Object>(order, HttpStatus.OK);
 
 		}
-		//localhost:8091/onlinecakeorder/admin/userbyid/
+		
+		/*
+		 * Controller for the requests related to the User
+		 */
+		// requests the controller to view user by userid
+		
+		//localhost:8091/onlinecakeorder/admin/userbyid/--done
 		@GetMapping("/userbyid/{userId}")
 		public ResponseEntity geUserById(@PathVariable("userId") int userId) throws UserIdNotFoundException{
 			User user = adServe.viewUserById(userId);

@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @Table(name = "registration_details")
 public class RegistrationForm {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "registration_id")
-	private long userId;
+	private int userId;
 	
 	@Column(name = "user_Name")
 	private String userName;
@@ -34,7 +34,7 @@ public class RegistrationForm {
 
 	}
 	
-	public RegistrationForm(long userId, String userName, String userPassword, String userAddress, String userCity,
+	public RegistrationForm(int userId, String userName, String userPassword, String userAddress, String userCity,
 			String userState) {
 		super();
 		this.userId = userId;
@@ -47,10 +47,10 @@ public class RegistrationForm {
 
 
 
-	public long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	

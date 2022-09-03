@@ -22,7 +22,13 @@ public class CustomerSupportController {
 	@Autowired
 	private CustomerSupportService customerserve;
 	
-	//http://localhost:8091/onlinecakeorder/customersupport/viewallraisecomplaints
+	/*
+	 *  Controller for the requests related to the Raise Complaint
+	 */	
+	
+	//requests the controller to add vegetable in cake store
+	
+	//http://localhost:8091/onlinecakeorder/customersupport/viewallraisecomplaints--done
 	
 	@GetMapping("/viewallraisecomplaints")
 	public ResponseEntity<List<RaiseComplaint>> viewcompliants()

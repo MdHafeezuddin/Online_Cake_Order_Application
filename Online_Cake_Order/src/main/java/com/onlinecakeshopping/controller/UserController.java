@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.onlinecakeshopping.exception.CakeIdNotFoundException;
+
 import com.onlinecakeshopping.model.Cake;
 import com.onlinecakeshopping.model.Cart;
 import com.onlinecakeshopping.model.Feedback;
@@ -29,10 +29,15 @@ public class UserController {
 	@Autowired
 	private UserService userServe;
 	
+	/*
+	 *  Controller for the requests related to the Feedback
+	 */	
+	
+	//requests the controller to give Feedback
 
 	
 	
-	 //http://localhost:8091/onlinecakeorder/user/feedback
+	 //http://localhost:8091/onlinecakeorder/user/feedback--done
 	
 	@PostMapping("/feedback") 
 	public ResponseEntity<Feedback> giveFeedback(@RequestBody Feedback feedback)
@@ -42,9 +47,12 @@ public class UserController {
 		
 	}
 	
-	
+	/*
+	 *  Controller for the requests related to the cake store
+	 */	
+	//requests the controller to view all cakes
 
-	//http://localhost:8091/onlinecakeorder/user/allcake
+	//http://localhost:8091/onlinecakeorder/user/allcake--done
 
 	@GetMapping("/allcake") 
 	public ResponseEntity<List<Cake>> viewAllcakes()
@@ -55,9 +63,15 @@ public class UserController {
 		
 	}
 	
+	/*
+	 *  Controller for the requests related to the cart
+	 */
+	
+	//requests the controller to add cake to Cart
+	
 
 
-	//http://localhost:8091/onlinecakeorder/user/addcaketocart
+	//http://localhost:8091/onlinecakeorder/user/addcaketocart--done
 	
 	@PostMapping("/addcaketocart") 
 	public ResponseEntity<Cart> addToCart(@RequestBody Cart cart)
@@ -67,7 +81,9 @@ public class UserController {
 		
 	}
 	
-	//http://localhost:8091/onlinecakeorder/user/viewcart
+	//requests the controller to view Cart
+	
+	//http://localhost:8091/onlinecakeorder/user/viewcart--done
 	
 	@GetMapping("/viewcart")
 	public ResponseEntity<List<Cart>> viewCart()
@@ -77,22 +93,28 @@ public class UserController {
 		
 	}
 	
-
-
-	//http://localhost:8091/onlinecakeorder/user/deletebycakeid--
+	
+	
+	//requests the controller to delete vegetable by id in cart 
+	
+	//http://localhost:8091/onlinecakeorder/user/deletebycakeid--error
+	
 	
 	@DeleteMapping("/deletebycakeid/{cakeId}")
-	public ResponseEntity<Cart> deleteById(@PathVariable("cakeId") Integer cakeId) throws CakeIdNotFoundException
+	public ResponseEntity deleteById(@PathVariable("cakeId") int cakeId) 
 	{
 		userServe.deleteCakebyId(cakeId);
 		return new ResponseEntity("Successfully deleted from cart ", HttpStatus.OK);
 		
 	}
-
-
-
 	
-	//http://localhost:8091/onlinecakeorder/user/raise--
+	/*
+	 *  Controller for the requests related to the raiseCompliant
+	 */
+	
+	//requests the controller to raise Compliant
+
+	//http://localhost:8091/onlinecakeorder/user/raise--done
 	@PostMapping("/raise")
 	public ResponseEntity<RaiseComplaint> raiseCompliant(@RequestBody RaiseComplaint raisecompliant)
 	{
@@ -101,10 +123,16 @@ public class UserController {
 		
 	}
 	
+	/*
+	 *  Controller for the requests related to the cake
+	 */
 	
-	//localhost:8091/onlinecakeorder/user/cakebyid/
+	//requests the controller to get cake by cakeId
+	
+	
+	//localhost:8091/onlinecakeorder/user/cakebyid/--done
 	@GetMapping("/cakebyid/{cakeId}")
-	public ResponseEntity getcakeById(@PathVariable("cakeId") Integer cakeId) throws CakeIdNotFoundException {
+	public ResponseEntity getcakeById(@PathVariable("cakeId") int cakeId) {
 		Cake cake=userServe.getById(cakeId);
 		return new ResponseEntity<Object>(cake,HttpStatus.OK);
 		

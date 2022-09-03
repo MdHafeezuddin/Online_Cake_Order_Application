@@ -20,9 +20,14 @@ public class CartController {
 	@Autowired
 	private CartService cartServe;
 	
+	/*
+	 *  Controller for the requests related to the Order
+	 */
+	
+	//requests the controller to make Order
 	
 
-	//http://localhost:8091/onlinecakeorder/Cartorderdetails/makeorder--
+	//http://localhost:8091/onlinecakeorder/Cartorderdetails/makeorder--done
 
 	@PostMapping("/makeorder")
 	public ResponseEntity<Order> makeOrderOnline(@RequestBody Order order)
